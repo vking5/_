@@ -25,8 +25,8 @@
     justify-content: center;
     flex-wrap: wrap;
     background-color: #f1f1f1;
-    padding: 1px;
-    gap: 1px;
+    padding: 10px;
+    gap: 10px;
   }
   
   nav#categoryButtons button {
@@ -49,12 +49,12 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 1px auto;
-    gap: 1px;
+    margin: 15px auto;
+    gap: 10px;
   }
   
   #subCategoryButtons button {
-    padding: 5px 5px;
+    padding: 8px 14px;
     background-color: #dcdcdc;
     border: none;
     border-radius: 5px;
@@ -112,37 +112,5 @@
   
   .card-content p strong {
     color: #555;
-  }
-  #cartButton {
-    background-color: #1d3557;
-    color: white;
-    padding: 6px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  #cartModal ul {
-    list-style: none;
-    padding-left: 0;
-    max-height: 200px;
-    overflow-y: auto;
-  }
-  
-  #cartModal ul li {
-    margin: 5px 0;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  #purchaseBtn {
-    margin-top: 10px;
-    padding: 8px 12px;
-    background-color: #1d3557;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
   }
   
