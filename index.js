@@ -30,7 +30,7 @@ const purchaseButton = document.getElementById('purchaseBtn');
 const subcategories = {
   "events": ["stages", "enterence", "pathway", "cheddar", "name board"],
   "catering": ["food corner", "Juice corner", "dishes", "drinks"],
-  "special events": ["mehandi", "wedding night", "bride to be", "groom to be", "birthday", "wedding anuversary"],
+  "special": ["mehandi", "haldi", "bride to be", "birthday"],
   "more": ["paper blast", "cold pyro", "dry ice", "sound", "light"]
 };
 
