@@ -28,10 +28,10 @@ const cartButton = document.getElementById('cartButton');
 const purchaseButton = document.getElementById('purchaseBtn');
 
 const subcategories = {
-  "events": ["stages", "enterence", "pathway", "cheddar", "name board"],
-  "catering": ["food corner", "Juice corner", "dishes", "drinks"],
-  "special": ["mehandi", "haldi", "bride to be", "birthday"],
-  "more": ["paper blast", "cold pyro", "dry ice", "sound", "light"]
+  "events": ["Stage", "Enterence", "Pathway", "Cheddar", "Nameboard"],
+  "catering": ["FoodCorner", "JuiceCorner", "Dishes", "Drinks"],
+  "special": ["Mehandi", "Haldi", "BrideToBe", "Birthday"],
+  "more": ["PaperBlast", "ColdPyro", "DryIce", "Sound", "Light"]
 };
 
 function toggleCart() {
