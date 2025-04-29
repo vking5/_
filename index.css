@@ -113,4 +113,37 @@
   .card-content p strong {
     color: #555;
   }
+
+  #cartButton {
+    background-color: #1d3557;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  #cartModal ul {
+    list-style: none;
+    padding-left: 0;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  
+  #cartModal ul li {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  #purchaseBtn {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #1d3557;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
   
