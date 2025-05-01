@@ -205,6 +205,25 @@ document.getElementById('clearPriceFilter').addEventListener('click', () => {
 });
 
 purchaseButton.addEventListener('click', () => {
+  // Check if cart is empty
+  if (!cart || cart.length === 0) {
+    const popup = document.getElementById('emptyCartPopup');
+    popup.style.display = 'block';
+    
+    // Hide the popup after 2 seconds
+    setTimeout(() => {
+      popup.style.display = 'none';
+    }, 2000);
+    
+    return;
+  }
+  
+
+  // Hide and disable the purchase button
+  purchaseButton.style.display = 'none';
+  purchaseButton.style.pointerEvents = 'none';
+  purchaseButton.style.opacity = '0';
+
   // Create a form dynamically for order details
   const orderForm = document.createElement('form');
   orderForm.setAttribute('id', 'orderForm');
@@ -212,25 +231,25 @@ purchaseButton.addEventListener('click', () => {
   orderForm.innerHTML = `
     <h3>Order Details</h3>
     
-    <label for="name">Name:</label>
-    <input type="text" id="name"  placeholder="Enter your name" />
+    <label for="name" style="color: white;"><b>Name:</b></label>
+    <input type="text" id="name" placeholder="Enter your name" />
 
-    <label for="phone">Phone Number:</label>
-    <input type="text" id="phone"  placeholder="Enter your phone number" />
+    <label for="phone" style="color: white;"><b>Phone Number:</b></label>
+    <input type="text" id="phone" placeholder="Enter your phone number" />
 
-    <label for="place">Place:</label>
+    <label for="place" style="color: white;"><b>Place:</b></label>
     <input type="text" id="place" placeholder="Enter your place" />
 
-    <label for="eventType">Event Type / Style (e.g. Marriage):</label>
-    <input type="text" id="eventType"  placeholder="Enter event type/style" />
+    <label for="eventType" style="color: white;"><b>Event Type / Style:</b></label>
+    <input type="text" id="eventType" placeholder="e.g. Marriage" />
 
-    <label for="eventDate">Event Date (mm/dd/yyyy):</label>
-    <input type="date" id="eventDate"  />
+    <label for="eventDate" style="color: white;"><b>Event Date:</b></label>
+    <input type="date" id="eventDate" />
 
-    <label for="eventTime">Event Time:</label>
-    <input type="time" id="eventTime"  />
+    <label for="eventTime" style="color: white;"><b>Event Time:</b></label>
+    <input type="time" id="eventTime" />
 
-    <label for="orderNote">Order Note (e.g. Suggestions...):</label>
+    <label for="orderNote" style="color: white;"><b>Order Note:</b></label>
     <textarea id="orderNote" placeholder="Enter any suggestions or notes here"></textarea>
 
     <div class="form-actions">
@@ -245,6 +264,11 @@ purchaseButton.addEventListener('click', () => {
   // Handle cancel button click
   document.getElementById('cancelOrder').addEventListener('click', () => {
     document.body.removeChild(orderForm);
+
+    // Show and re-enable the purchase button
+    purchaseButton.style.display = 'inline-flex';
+    purchaseButton.style.pointerEvents = 'auto';
+    purchaseButton.style.opacity = '1';
   });
 
   // Handle form submission
