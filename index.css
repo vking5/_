@@ -26,40 +26,52 @@
   
   nav#categoryButtons {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    background-color: rgba(241, 241, 241, 0.9);
-    padding: 2px;
-    gap: 2px;
+    justify-content: left; /* center items horizontally */
+    align-items: center;     /* center items vertically */
+    gap: 2px;                /* tiny gap between items */
+    background: rgba(34, 34, 34, 0.9);
+    color: #f4f4f4;
+    padding: 10px 24px;
+    border-radius: 10px;      /* optional: slightly rounded corners for standard UI */
+    font-weight: 500;        /* cleaner text appearance */
+    font-size: 15px;         /* standard readable size */
   }
+  
   
   nav#categoryButtons button {
+    margin-right: 7px;
     padding: 7px 10px;
-    background-color: #e0e0e0;
-    border: none;
-    border-radius: 6px;
     cursor: pointer;
-    font-weight: 500;
-    transition: background 0.3s;
+    background-color: #444;
+    color: #f0f0f0;
+    border: none;
+    border-radius: 4px;
+    transition: background 0.3s ease;
   }
   
-  nav#categoryButtons button:hover,
+  nav#categoryButtons button:hover
   nav#categoryButtons button.active {
-    background-color: #1d3557;
+    background-color: #00ffb3;
     color: white;
   }
   
   #subCategoryButtons {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* ensures it stays above other elements */
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 2px auto;
     gap: 2px;
+    margin: 2px auto;
+    background-color: transparent; /* stays invisible if you don’t want a background */
+    padding: 4px 0; /* optional padding */
   }
   
   #subCategoryButtons button {
     padding: 5px 8px;
-    background-color: #dcdcdc;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -68,9 +80,10 @@
   
   #subCategoryButtons button:hover,
   #subCategoryButtons button.active {
-    background-color: #457b9d;
+    background-color: #000000;
     color: white;
   }
+  
   
   .grid {
     display: grid;
@@ -119,7 +132,7 @@
   }
   
   #cartButton {
-    background-color: #1d3557;
+    background-color: transparent;
     color: white;
     padding: 5px;
     border: none;
@@ -127,6 +140,27 @@
     cursor: pointer;
     font-weight: bold;
   }
+
+  #cartButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 1px;
+    position: absolute;
+    top: 4px;
+    right: 1px;
+    background-color: transparent;
+    color: white;
+    padding: 6px 10px;        /* slightly more spacing */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;          /* adjust this to resize 🛒 and 0 together */
+  }
+  
+  
+  
+  
   
   #cartModal ul {
     list-style: none;
@@ -142,14 +176,36 @@
   }
   
   #purchaseBtn {
-    margin-top: 10px;
-    padding: 8px 12px;
-    background-color: #1d3557;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 20px;
+    background-color: #00722abd; /* WhatsApp green */
     color: white;
+    font-size: 16px;
+    font-weight: 600;
     border: none;
-    border-radius: 4px;
+    border-radius: 25px;
     cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease, transform 0.2s ease;
   }
+  
+  #purchaseBtn:hover {
+    background-color: #1ebe5d;
+    transform: translateY(-2px);
+  }
+  
+  #purchaseBtn:active {
+    transform: translateY(0);
+  }
+  
+  .whatsapp-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+  }
+  
   
   .dropdown {
     position: relative;
