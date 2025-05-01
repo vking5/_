@@ -26,17 +26,16 @@
   
   nav#categoryButtons {
     display: flex;
-    justify-content: left; /* center items horizontally */
-    align-items: center;     /* center items vertically */
-    gap: 2px;                /* tiny gap between items */
+    justify-content: left;
+    align-items: center;
+    gap: 2px;
     background: rgba(34, 34, 34, 0.9);
     color: #f4f4f4;
     padding: 10px 24px;
-    border-radius: 10px;      /* optional: slightly rounded corners for standard UI */
-    font-weight: 500;        /* cleaner text appearance */
-    font-size: 15px;         /* standard readable size */
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 15px;
   }
-  
   
   nav#categoryButtons button {
     margin-right: 7px;
@@ -46,14 +45,20 @@
     color: #f0f0f0;
     border: none;
     border-radius: 4px;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease;
   }
   
-  nav#categoryButtons button:hover
-  nav#categoryButtons button.active {
-    background-color: #00ffb3;
-    color: white;
+  /* Hover state only — no size or color change like active */
+  nav#categoryButtons button:hover {
+    background-color: #666;
   }
+  
+  /* Active (clicked) state */
+  nav#categoryButtons button.active {
+    background-color: #ffffffb6;
+    color: rgb(0, 0, 0);
+  }
+  
   
   #subCategoryButtons {
     position: sticky;
@@ -162,30 +167,84 @@
   
   
   
-  #cartModal ul {
-    list-style: none;
-    padding-left: 0;
-    max-height: 200px;
-    overflow-y: auto;
+/* Cart Modal Styles */
+#cartModal {
+  display: none;
+  position: fixed;
+  top: 1px;
+  right: 1px;
+  background-color: #ffffff;
+  padding: 2px 2px;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  width: 260px;
+  z-index: 999;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: slideIn 0.3s ease-out;
+}
+
+#cartModal h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  color: #333;
+}
+
+#cartList {
+  list-style: none;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+#cartList li {
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  color: #555;
+}
+
+#closeCartBtn {
+  background-color: rgba(0, 0, 0, 0.608);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-weight: 600;
+}
+
+#closeCartBtn:hover {
+  background-color: #e84118;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
   
-  #cartModal ul li {
-    margin: 5px 0;
-    display: flex;
-    justify-content: space-between;
-  }
   
   #purchaseBtn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 15px 20px;
+    gap: 0px;
+    padding: 8px 18px;
     background-color: #00722abd; /* WhatsApp green */
     color: white;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     border: none;
-    border-radius: 25px;
+    border-radius: 500px;
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -201,43 +260,63 @@
   }
   
   .whatsapp-icon {
-    width: 24px;
-    height: 24px;
+    width: 60px;
+    height: 60px;
     vertical-align: middle;
   }
   
-  
-  .dropdown {
+
+
+  .dropdown button {
     position: relative;
-    display: inline-block;
-    margin-top: 10px;
+    bottom: 14px;
+    left: 0px;
+    padding: 4px 8px;
+    font-size: 14px;
+    background-color: #444;
+    cursor: pointer;
+    border-radius: 15px;
   }
-  
+
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: white;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-    z-index: 999;
-    border: 1px solid #ccc;
+    background-color: rgbs(255, 255, 255);
+    min-width: 115px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 4px;
+    margin-top: 8px;
+    padding: 8px 0;
   }
-  
-  .dropdown-content button {
-    width: 100%;
-    padding: 8px 12px;
-    text-align: left;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .dropdown-content button:hover {
-    background-color: #f1f1f1;
-  }
-  
+
   .dropdown:hover .dropdown-content {
     display: block;
+  }
+
+  .dropdown-content button {
+    padding: 1px 1px;
+    font-size: 14px;
+    text-align: left;
+    background-color: #fff;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .dropdown-content button:hover {
+    background-color: #f4f4f4;
+  }
+
+  #clearPriceFilter {
+    background-color: #fff;
+    font-weight: bold;
+    color: #f44336;
+  }
+
+  #clearPriceFilter:hover {
+    background-color: #f8d7d7;
   }
   
 
@@ -320,7 +399,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(255, 255, 255); /* Semi-transparent background */
+    background-color: black; /* Semi-transparent background */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -343,7 +422,7 @@
   #orderForm h3 {
     text-align: center;
     margin-bottom: 20px;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
   }
   
   #orderForm label {
