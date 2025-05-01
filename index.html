@@ -99,9 +99,7 @@
 
   <!-- Fixed bottom-center Purchase Button -->
   <div style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 999;">
-    <button id="purchaseBtn" onclick="showOrderForm()">
-      Purchase
-      <img src="assets/whatsapplogo.png" alt="WhatsApp" class="whatsapp-icon">
+    <button id="purchaseBtn" onclick="showOrderForm()">Purchase<img src="assets/whatsapplogo.png" alt="WhatsApp" class="whatsapp-icon">
     </button>
   </div>
   
@@ -115,6 +113,23 @@
       }, 800); // 2 seconds
     });
   </script>
+  <div id="emptyCartPopup" style="
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ff4d4d;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 9999;
+  display: none;
+  font-family: sans-serif;
+">
+  🛒 Your cart is empty!
+</div>
+
 </body>
 </html>
 
