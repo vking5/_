@@ -267,16 +267,20 @@
   
 
 
-  .dropdown button {
-    position: relative;
-    bottom: 14px;
-    left: 0px;
-    padding: 4px 8px;
-    font-size: 14px;
-    background-color: #444;
-    cursor: pointer;
-    border-radius: 15px;
-  }
+.dropdown button {
+  position: relative;
+  bottom: 14px;
+  left: 0px;
+  padding: 4px 8px; /* Keep current size */
+  font-size: 14px;
+  background-color: #444444a6;
+  color: #000000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
 
   .dropdown-content {
     display: none;
