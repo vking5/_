@@ -339,12 +339,23 @@ document.getElementById("filterMenu").addEventListener("click", function (e) {
 
 
 
-// Close the modal when clicking the close (×) button
+
+
+
+// Image modal behavior
+document.addEventListener('click', function (e) {
+  if (e.target.tagName === 'IMG' && e.target.closest('.product-card')) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    modalImage.src = e.target.src;
+    modal.style.display = 'flex';
+  }
+});
+
 document.getElementById('closeModal').addEventListener('click', () => {
   document.getElementById('imageModal').style.display = 'none';
 });
 
-// Close the modal when clicking anywhere outside the image
 window.addEventListener('click', (e) => {
   const modal = document.getElementById('imageModal');
   if (e.target === modal) {
