@@ -89,7 +89,7 @@ async function fetchAndDisplayProducts(category = 'all', subcategory = null) {
         <img src="${data.imageUrl}" alt="${data.productName}">
         <div class="card-content" align="center">
           <h3>${data.productName}</h3>
-          <p><strong></strong> ₹${data.rate}</p>
+          <p><strong></strong> ${data.rate}</p>
           <button class="add-to-cart-btn" data-id="${data.id}">Add to Cart</button>
         </div>
       `;
@@ -148,7 +148,7 @@ function updateCartUI() {
   cart.forEach((item, index) => {
     const li = document.createElement('li');
     li.innerHTML = `
-      ${item.productName} - ₹${item.rate}
+      ${item.productName} - ${item.rate}
       <button class="remove-item-btn" data-index="${index}">🗑️</button>
     `;
     cartList.appendChild(li);
@@ -296,7 +296,7 @@ purchaseButton.addEventListener('click', () => {
 
     message += `*Order Items:*\n`;
     cart.forEach(item => {
-      message += `• ${item.productName} - ₹${item.rate}\n`;
+      message += `• ${item.productName} - ${item.rate}\n`;
     });
 
     const encodedMsg = encodeURIComponent(message);
