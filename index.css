@@ -478,16 +478,17 @@
 
 
 .add-to-cart-btn {
-  background-color: #28a745; /* green */
-  color: white;
+  background-color: #6c757d; /* standard grey */
+  color: #fff;
   padding: 10px 16px;
   font-size: 14px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .add-to-cart-btn:hover {
-  background-color: #218838;
+  background-color: #5a6268; /* darker grey on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
