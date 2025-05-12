@@ -336,3 +336,18 @@ document.getElementById("filterMenu").addEventListener("click", function (e) {
     e.stopPropagation();
 });
 
+
+
+
+// Close the modal when clicking the close (×) button
+document.getElementById('closeModal').addEventListener('click', () => {
+  document.getElementById('imageModal').style.display = 'none';
+});
+
+// Close the modal when clicking anywhere outside the image
+window.addEventListener('click', (e) => {
+  const modal = document.getElementById('imageModal');
+  if (e.target === modal) {
+    modal.style.display = 'none';
+  }
+});
