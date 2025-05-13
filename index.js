@@ -323,7 +323,7 @@ purchaseButton.addEventListener('click', () => {
     });
 
     const encodedMsg = encodeURIComponent(message);
-    const whatsappPhoneNumber = '919778202896';
+    const whatsappPhoneNumber = '916238913819';
     window.open(`https://wa.me/${whatsappPhoneNumber}?text=${encodedMsg}`, '_blank');
 
     // Optionally, clear the cart after sending the order
