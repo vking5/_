@@ -85,46 +85,37 @@ async function fetchAndDisplayProducts(category = 'all', subcategory = null) {
     products.forEach(data => {
       const card = document.createElement('div');
       card.classList.add('product-card');
-      card.innerHTML = `
-      <img src="${data.imageUrl}" alt="${data.productName}" class="product-image">
-      <div class="card-content" align="center">
-        <h3>${data.productName}</h3>
-        <p><strong></strong> ${data.rate}</p>
-        <button class="add-to-cart-btn" data-id="${data.id}">Add to Cart</button>
-      </div>
-    `;
-    
-    // Add event listener to image after card is created
-    const image = card.querySelector('.product-image');
-    image.addEventListener('click', () => {
-      const newWin = window.open('', '_blank');
-      newWin.document.write(`
-        <html>
-          <head>
-            <title>Image Preview</title>
-            <style>
-              body {
-                margin: 0;
-                background-color: black;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-              }
-              img {
-                max-width: 100%;
-                max-height: 100%;
-                cursor: pointer;
-              }
-            </style>
-          </head>
-          <body>
-            <img src="${data.imageUrl}" onclick="window.close()">
-          </body>
-        </html>
-      `);
-    });
-    
+card.innerHTML = `
+  <img src="${data.imageUrl}" alt="${data.productName}" class="product-image">
+  <div class="card-content" align="center">
+    <h3>${data.productName}</h3>
+    <p><strong></strong> ${data.rate}</p>
+    <button class="add-to-cart-btn" data-id="${data.id}">Add to Cart</button>
+  </div>
+`;
+
+// Add event listener to image after card is created
+const image = card.querySelector('.product-image');
+image.addEventListener('click', () => {
+  // Create a modal-like view for the image
+  const modal = document.createElement('div');
+  modal.classList.add('image-modal');
+  modal.innerHTML = `
+    <div class="modal-content">
+      <img src="${data.imageUrl}" class="modal-image">
+    </div>
+  `;
+
+  // Append modal to body
+  document.body.appendChild(modal);
+
+// Close modal when clicking anywhere in the modal (image or background)
+modal.addEventListener('click', () => {
+  modal.remove();
+});
+
+});
+
 
       const item = {
         id: data.id,
@@ -367,3 +358,11 @@ window.addEventListener("click", function () {
 document.getElementById("filterMenu").addEventListener("click", function (e) {
     e.stopPropagation();
 });
+
+
+
+
+
+
+
+
