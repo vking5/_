@@ -93,7 +93,7 @@
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
+    gap: 10px;
     padding: 20px;
     max-width: 1200px;
     margin: auto;
@@ -101,7 +101,7 @@
   
   .product-card {
     background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 10px;
+    border-radius: 11px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     overflow: hidden;
     transition: transform 0.2s;
@@ -113,12 +113,12 @@
   
   .product-card img {
     width: 100%;
-    height: 180px;
+    height: 245px;
     object-fit: cover;
   }
   
   .card-content {
-    padding: 12px;
+    padding: 5px;
   }
   
   .card-content h3 {
@@ -162,8 +162,6 @@
     font-weight: bold;
     font-size: 18px;          /* adjust this to resize 🛒 and 0 together */
   }
-  
-  
   
   
   
@@ -232,13 +230,11 @@
   }
 }
 
-  
-  
   #purchaseBtn {
     display: inline-flex;
     align-items: center;
     gap: 0px;
-    padding: 8px 18px;
+    padding: 6px 18px;
     background-color: #00722abd; /* WhatsApp green */
     color: white;
     font-size: 20px;
@@ -265,8 +261,6 @@
     vertical-align: middle;
   }
   
-
-
 .dropdown button {
   position: relative;
   bottom: 14px;
@@ -471,12 +465,6 @@
     opacity: 0.9;
   }
   
-
-
-
-
-
-
 .add-to-cart-btn {
   background-color: #6c757d; /* standard grey */
   color: #fff;
@@ -493,51 +481,51 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-
-
-/* Modal backdrop */
+/* Modal background styling */
 .image-modal {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.85);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent black */
   display: flex;
   justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  cursor: zoom-out;
-  animation: fadeIn 0.3s ease-in-out;
-  padding: 10px;
-  box-sizing: border-box;
+  align-items: flex-start; /* Align modal content to the top */
+  padding-top: 20vh; /* Add some space from the top */
+  z-index: 1000; /* Ensure it's above all other content */
+  cursor: pointer; /* Indicate the modal background is clickable */
+  animation: fadeIn 0.3s ease-in-out; /* Fade-in effect */
 }
 
-/* Centering the image properly and making it responsive */
+/* Modal content styling */
 .modal-content {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 93%; /* Limit max width for responsiveness */
+  max-height: 93%; /* Limit max height for responsiveness */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Center image horizontally */
+  align-items: center; /* Center image vertically within modal content */
+  animation: slideUpFadeIn 0.3s ease-in-out; /* Slide-up effect with fade-in */
+  padding: 0 10px; /* Add padding for better spacing */
+  box-sizing: border-box; /* Ensure padding doesn't affect layout */
 }
 
 /* Image inside the modal */
 .modal-image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
-  transition: transform 0.3s ease;
+  width: 100%; /* Make image fill its container */
+  height: auto;
+  object-fit: contain; /* Ensure the image fits within the modal */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6); /* Soft shadow */
+  transition: transform 0.3s ease; /* Smooth transform */
 }
 
 /* On hover, slightly zoom the image for better UX */
 .modal-image:hover {
-  transform: scale(1.02);
+  transform: scale(1.05); /* Slight zoom effect */
 }
 
-/* Fade-in animation */
+/* Smooth fade-in and slide-up effect */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -549,9 +537,28 @@
   }
 }
 
+@keyframes slideUpFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Start from 20px below */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Move to its original position */
+  }
+}
+
 /* Optional: prevent body scroll when modal is open */
 body.modal-open {
   overflow: hidden;
 }
 
+/* Optional: Add transition for closing the modal smoothly */
+.image-modal .modal-content {
+  cursor: pointer;
+}
 
+.spacer-div {
+  height: 100px; /* Adjust the height as needed */
+  background-color: transparent;
+}
