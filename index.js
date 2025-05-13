@@ -86,13 +86,45 @@ async function fetchAndDisplayProducts(category = 'all', subcategory = null) {
       const card = document.createElement('div');
       card.classList.add('product-card');
       card.innerHTML = `
-        <img src="${data.imageUrl}" alt="${data.productName}">
-        <div class="card-content" align="center">
-          <h3>${data.productName}</h3>
-          <p><strong></strong> ${data.rate}</p>
-          <button class="add-to-cart-btn" data-id="${data.id}">Add to Cart</button>
-        </div>
-      `;
+      <img src="${data.imageUrl}" alt="${data.productName}" class="product-image">
+      <div class="card-content" align="center">
+        <h3>${data.productName}</h3>
+        <p><strong></strong> ${data.rate}</p>
+        <button class="add-to-cart-btn" data-id="${data.id}">Add to Cart</button>
+      </div>
+    `;
+    
+    // Add event listener to image after card is created
+    const image = card.querySelector('.product-image');
+    image.addEventListener('click', () => {
+      const newWin = window.open('', '_blank');
+      newWin.document.write(`
+        <html>
+          <head>
+            <title>Image Preview</title>
+            <style>
+              body {
+                margin: 0;
+                background-color: black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+              }
+              img {
+                max-width: 100%;
+                max-height: 100%;
+                cursor: pointer;
+              }
+            </style>
+          </head>
+          <body>
+            <img src="${data.imageUrl}" onclick="window.close()">
+          </body>
+        </html>
+      `);
+    });
+    
 
       const item = {
         id: data.id,
@@ -334,31 +366,4 @@ window.addEventListener("click", function () {
 // Prevent dropdown from closing when clicking inside
 document.getElementById("filterMenu").addEventListener("click", function (e) {
     e.stopPropagation();
-});
-
-
-
-
-
-
-
-// Image modal behavior
-document.addEventListener('click', function (e) {
-  if (e.target.tagName === 'IMG' && e.target.closest('.product-card')) {
-    const modal = document.getElementById('imageModal');
-    const modalImage = document.getElementById('modalImage');
-    modalImage.src = e.target.src;
-    modal.style.display = 'flex';
-  }
-});
-
-document.getElementById('closeModal').addEventListener('click', () => {
-  document.getElementById('imageModal').style.display = 'none';
-});
-
-window.addEventListener('click', (e) => {
-  const modal = document.getElementById('imageModal');
-  if (e.target === modal) {
-    modal.style.display = 'none';
-  }
 });
