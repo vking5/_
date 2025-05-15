@@ -80,11 +80,11 @@ async function fetchAndDisplayProducts(category = 'all', subcategory = null) {
       products.sort((a, b) => b.rate - a.rate);
     }
 
-    productGrid.innerHTML = '';
+productGrid.innerHTML = '';
 
-    products.forEach(data => {
-      const card = document.createElement('div');
-      card.classList.add('product-card');
+products.forEach(data => {
+  const card = document.createElement('div');
+  card.classList.add('product-card');
 card.innerHTML = `
   <img src="${data.imageUrl}" alt="${data.productName}" class="product-image">
   <div class="card-content" align="center">
@@ -97,53 +97,68 @@ card.innerHTML = `
 // Add event listener to image after card is created
 const image = card.querySelector('.product-image');
 image.addEventListener('click', () => {
-  // Create a modal-like view for the image
   const modal = document.createElement('div');
   modal.classList.add('image-modal');
   modal.innerHTML = `
-    <div class="modal-content">
-      <img src="${data.imageUrl}" class="modal-image">
+    <div class="modal-content" style="display:flex; justify-content:center; align-items:flex-start; height:100vh; width:100vw; padding-top: 5vh;">
+      <img src="${data.imageUrl}" class="modal-image" style="max-width: 90vw; max-height: 90vh; transition: transform 0.3s ease; cursor:pointer;"/>
     </div>
   `;
 
-  // Append modal to body
   document.body.appendChild(modal);
 
-// Close modal when clicking anywhere in the modal (image or background)
-modal.addEventListener('click', () => {
-  modal.remove();
+  const modalContent = modal.querySelector('.modal-content');
+  const modalImage = modal.querySelector('.modal-image');
+  let rotated = false;
+
+  modalImage.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (!rotated) {
+      modalImage.style.transform = 'rotate(90deg)';
+      modalImage.style.maxWidth = '90vh';
+      modalImage.style.maxHeight = '90vw';
+      modalImage.style.objectFit = 'contain';
+      modalContent.style.alignItems = 'center';
+      modalContent.style.paddingTop = '0';
+      rotated = true;
+    } else {
+      modal.remove();
+    }
+  });
+
+  modal.addEventListener('click', () => {
+    modal.remove();
+  });
 });
 
+
+  const item = {
+    id: data.id,
+    productName: data.productName,
+    rate: data.rate
+  };
+
+  const btn = card.querySelector('.add-to-cart-btn');
+  const exists = cart.find(p => p.id === item.id);
+  btn.textContent = exists ? 'Added' : 'Add to Cart';
+  btn.disabled = !!exists;
+
+  btn.addEventListener('click', () => {
+    if (!cart.find(p => p.id === item.id)) {
+      cart.push(item);
+      saveCart();
+      updateCartUI();
+    }
+  });
+
+  productGrid.appendChild(card);
 });
 
-
-      const item = {
-        id: data.id,
-        productName: data.productName,
-        rate: data.rate
-      };
-
-      const btn = card.querySelector('.add-to-cart-btn');
-      const exists = cart.find(p => p.id === item.id);
-      btn.textContent = exists ? 'Added' : 'Add to Cart';
-      btn.disabled = !!exists;
-
-      btn.addEventListener('click', () => {
-        if (!cart.find(p => p.id === item.id)) {
-          cart.push(item);
-          saveCart();
-          updateCartUI();
-        }
-      });
-
-      productGrid.appendChild(card);
-    });
-
-    updateCartUI();
-  } catch (error) {
-    console.error("Error loading products:", error);
-    productGrid.innerHTML = "<p>Failed to load products.</p>";
-  }
+updateCartUI();
+} catch (error) {
+  console.error("Error loading products:", error);
+  productGrid.innerHTML = "<p>Failed to load products.</p>";
+}
 }
 
 function displaySubcategoryButtons(category) {
@@ -198,6 +213,7 @@ cartList.addEventListener('click', (e) => {
     }
   }
 });
+
 
 document.getElementById('cartButton').addEventListener('click', toggleCart);
 document.getElementById('closeCartBtn').addEventListener('click', toggleCart);
