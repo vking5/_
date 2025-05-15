@@ -481,50 +481,62 @@
 }
 
 /* Modal background styling */
+/* Main modal container */
 .image-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent black */
+  background-color: rgba(0, 0, 0, 0.9);
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Align modal content to the top */
-  padding-top: 20vh; /* Add some space from the top */
-  z-index: 1000; /* Ensure it's above all other content */
-  cursor: pointer; /* Indicate the modal background is clickable */
-  animation: fadeIn 0.3s ease-in-out; /* Fade-in effect */
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+  animation: fadeIn 0.3s ease-in-out;
+  overflow: hidden;
 }
 
-/* Modal content styling */
+/* Adjust for portrait vs landscape */
+@media (orientation: portrait) {
+  .image-modal {
+    align-items: flex-start;
+    padding-top: 5vh;
+  }
+}
+
+/* Modal content wrapper */
 .modal-content {
-  max-width: 93%; /* Limit max width for responsiveness */
-  max-height: 93%; /* Limit max height for responsiveness */
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
   display: flex;
-  justify-content: center; /* Center image horizontally */
-  align-items: center; /* Center image vertically within modal content */
-  animation: slideUpFadeIn 0.3s ease-in-out; /* Slide-up effect with fade-in */
-  padding: 0 10px; /* Add padding for better spacing */
-  box-sizing: border-box; /* Ensure padding doesn't affect layout */
+  justify-content: center;
+  align-items: center;
+  animation: slideUpFadeIn 0.3s ease-in-out;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 /* Image inside the modal */
 .modal-image {
-  width: 100%; /* Make image fill its container */
+  max-width: 100vw;
+  max-height: 100vh;
+  width: auto;
   height: auto;
-  object-fit: contain; /* Ensure the image fits within the modal */
-  border-radius: 12px; /* Rounded corners */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6); /* Soft shadow */
-  transition: transform 0.3s ease; /* Smooth transform */
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
 }
 
-/* On hover, slightly zoom the image for better UX */
+/* Zoom on hover */
 .modal-image:hover {
-  transform: scale(1.05); /* Slight zoom effect */
+  transform: scale(1.05);
 }
 
-/* Smooth fade-in and slide-up effect */
+/* Fade animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -536,28 +548,30 @@
   }
 }
 
+/* Slide + fade animation */
 @keyframes slideUpFadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px); /* Start from 20px below */
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0); /* Move to its original position */
+    transform: translateY(0);
   }
 }
 
-/* Optional: prevent body scroll when modal is open */
+/* Prevent scroll behind modal */
 body.modal-open {
   overflow: hidden;
 }
 
-/* Optional: Add transition for closing the modal smoothly */
+/* Clickable modal content */
 .image-modal .modal-content {
   cursor: pointer;
 }
 
+/* Optional spacer */
 .spacer-div {
-  height: 100px; /* Adjust the height as needed */
+  height: 100px;
   background-color: transparent;
 }
