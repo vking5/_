@@ -488,90 +488,29 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  background: rgba(0,0,0,0.9);
   display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 1000;
-  cursor: pointer;
-  animation: fadeIn 0.3s ease-in-out;
-  overflow: hidden;
+  justify-content: center;
+  z-index: 9999;
 }
 
-/* Adjust for portrait vs landscape */
-@media (orientation: portrait) {
-  .image-modal {
-    align-items: flex-start;
-    padding-top: 5vh;
-  }
+.image-modal .modal-content {
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Modal content wrapper */
-.modal-content {
-  width: 100%;
+.image-modal .modal-image {
   max-width: 100%;
   max-height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: slideUpFadeIn 0.3s ease-in-out;
-  padding: 0 10px;
-  box-sizing: border-box;
+  transition: transform 0.4s ease, max-width 0.4s ease, max-height 0.4s ease;
 }
 
-/* Image inside the modal */
-.modal-image {
-  max-width: 100vw;
-  max-height: 100vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
-  transition: transform 0.3s ease;
-}
-
-/* Zoom on hover */
-.modal-image:hover {
-  transform: scale(1.05);
-}
-
-/* Fade animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Slide + fade animation */
-@keyframes slideUpFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Prevent scroll behind modal */
-body.modal-open {
-  overflow: hidden;
-}
-
-/* Clickable modal content */
-.image-modal .modal-content {
-  cursor: pointer;
-}
-
-/* Optional spacer */
-.spacer-div {
-  height: 100px;
-  background-color: transparent;
+.image-modal .modal-image.rotated {
+  transform: rotate(90deg);
+  max-width: 100vh;
+  max-height: 100vw;
 }
