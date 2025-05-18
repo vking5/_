@@ -89,7 +89,6 @@ card.innerHTML = `
   <img src="${data.imageUrl}" alt="${data.productName}" class="product-image">
   <div class="card-content" align="center">
     <h3>${data.productName}</h3>
-    <p><strong></strong></p>
     <button class="add-to-cart-btn" data-id="${data.id}">Add to Cart</button>
   </div>
 `;
