@@ -34,7 +34,7 @@ const subcategories = {
   "events": ["Stage", "Enterence", "Pathway", "Cheddar", "Nameboard"],
   "catering": ["FoodCorner", "JuiceCorner", "Dishes", "Drinks"],
   "special": ["Mehandi", "Haldi", "BrideToBe", "Birthday"],
-  "more": ["PaperBlast", "ColdPyro", "DryIce", "Sound", "Light"]
+  "more": ["Paperblast", "Coldpyro", "DryIce", "Sound", "Light"]
 };
 
 function saveCart() {
