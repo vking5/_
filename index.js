@@ -373,18 +373,3 @@ window.addEventListener("click", function () {
 document.getElementById("filterMenu").addEventListener("click", function (e) {
     e.stopPropagation();
 });
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  // Push dummy state so there's something to go "back" to
-  history.pushState(null, null, location.href);
-
-  window.addEventListener('popstate', function (event) {
-    const confirmExit = confirm("Are you sure you want to exit?");
-    if (confirmExit) {
-      history.back();
-    } else {
-      history.pushState(null, null, location.href);
-    }
-  });
-});
