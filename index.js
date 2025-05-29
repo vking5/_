@@ -131,11 +131,13 @@ image.addEventListener('click', () => {
 });
 
 
-  const item = {
-    id: data.id,
-    productName: data.productName,
-    rate: data.rate
-  };
+const item = {
+  id: data.id,
+  productName: data.productName,
+  rate: data.rate,
+  imageUrl: data.imageUrl // <- include image URL
+};
+
 
   const btn = card.querySelector('.add-to-cart-btn');
   const exists = cart.find(p => p.id === item.id);
@@ -323,19 +325,26 @@ purchaseButton.addEventListener('click', () => {
 
 
 
-    let message = `*Order Details:*\n\n`;
-    message += `*Name:* ${customerName}\n`;
-    message += `*Phone Number:* ${phoneNumber}\n`;
-    message += `*Place:* ${place}\n`;
-    message += `*Event Type / Style:* ${eventType}\n`;
-    message += `*Event Date:* ${eventDate}\n`;
-    message += `*Event Time:* ${eventTime}\n`;
-    message += `*Order Notes:* ${orderNote}\n\n`;
+let message = `📦 *Order Details*\n\n`;
+message += `*Name:* ${customerName}\n`;
+message += `*Phone Number:* ${phoneNumber}\n`;
+message += `*Place:* ${place}\n`;
+message += `*Event Type:* ${eventType}\n`;
+message += `*Event Date:* ${eventDate}\n`;
+message += `*Event Time:* ${eventTime}\n`;
+message += `*Order Notes:* ${orderNote}\n\n`;
 
-    message += `*Order Items:*\n`;
-    cart.forEach(item => {
-      message += `• ${item.productName} - ${item.rate}\n`;
-    });
+message += `🛒 *Order Items:*\n`;
+cart.forEach((product, index) => {
+  message += `\n${index + 1}. *${product.productName}*`;
+  if (product.imageUrl) {
+    message += `   ${product.imageUrl}`;
+  }
+});
+
+message += `\n\n✅ *Please confirm the above order.*`;
+
+
 
     const encodedMsg = encodeURIComponent(message);
     const whatsappPhoneNumber = '916238913819';
