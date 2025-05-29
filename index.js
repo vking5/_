@@ -342,7 +342,7 @@ cart.forEach((product, index) => {
   }
 });
 
-message += `\n\n✅ *Please confirm the order.*`;
+message += `\n\n *Please confirm the order.*`;
 
 
 
