@@ -373,3 +373,18 @@ window.addEventListener("click", function () {
 document.getElementById("filterMenu").addEventListener("click", function (e) {
     e.stopPropagation();
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Push initial state
+  history.pushState(null, null, location.href);
+
+  window.addEventListener('popstate', function (event) {
+    const exit = confirm("Are you sure you want to exit?");
+    if (!exit) {
+      history.pushState(null, null, location.href);
+    } else {
+      // User confirmed, allow back navigation (which might exit)
+    }
+  });
+});
