@@ -376,7 +376,7 @@ document.getElementById("filterMenu").addEventListener("click", function (e) {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Push initial state
+  // Push initial state so back button is intercepted
   history.pushState(null, null, location.href);
 
   window.addEventListener('popstate', function (event) {
@@ -384,7 +384,14 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!exit) {
       history.pushState(null, null, location.href);
     } else {
-      // User confirmed, allow back navigation (which might exit)
+      // User confirmed exit - allow back navigation
+      history.back(); // optional, depends on your needs
     }
+  });
+
+  window.addEventListener('beforeunload', function (e) {
+    // Show browser default confirmation on refresh or close
+    e.preventDefault();
+    e.returnValue = ''; // required for Chrome
   });
 });
